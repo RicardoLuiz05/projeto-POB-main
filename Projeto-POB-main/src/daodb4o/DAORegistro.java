@@ -22,6 +22,7 @@ import modelo.Registro;
 
 		//metodo da classe DAO sobrescrito DAOAluguel para
 		//criar "id" sequencial 
+		
 		public void create(Registro obj){
 			int novoid = super.gerarId();  	//gerar novo id da classe
 			obj.setId(novoid);				//atualizar id do objeto antes de grava-lo no banco
@@ -30,21 +31,21 @@ import modelo.Registro;
 
 		//--------------------------------------------
 		//  consultas de Aluguel
-		//--------------------------------------------
-
-		public List<Registro> alugueisModelo(String modelo){
+//		//--------------------------------------------
+//
+		public List<Registro> registroModelo(String modelo){
 			Query q;
 			q = manager.query();
 			q.constrain(Registro.class);
 			q.descend("carro").descend("modelo").constrain(modelo);
 			return q.execute();
 		}
-
-		public List<Registro> alugueisFinalizados(){
-			Query q = manager.query();
-			q.constrain(Registro.class);
-			q.descend("finalizado").constrain(true);
-			return q.execute();
-		}
+//
+//		public List<Registro> registrosFinalizados(){
+//			Query q = manager.query();
+//			q.constrain(Registro.class);
+//			q.descend("finalizado").constrain(true);
+//			return q.execute();
+//		}
 
 }
